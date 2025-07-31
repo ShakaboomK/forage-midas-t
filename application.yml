@@ -1,7 +1,26 @@
 spring:
   application:
     name : midas-core
+  datasource:
+    url: jdbc:h2:mem:testdb
+    username: sa
+    password: sa
+    driver-class-name: org.h2.Driver
+
+  kafka:
+    producer:
+#      bootstrap-servers: localhost:9092
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+    consumer:
+      group-id: midas-core
+      auto-offset-reset: earliest
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      properties:
+        spring.json.trusted.packages: '*'
+general:
+  kafka-topic: transaction-topic
 
 server:
-  port: 8215
+  port: 33400
 

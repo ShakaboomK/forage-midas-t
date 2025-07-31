@@ -1,5 +1,7 @@
 package com.jpmc.midascore;
 
+import com.jpmc.midascore.entity.UserRecord;
+import com.jpmc.midascore.repository.UserRepository;
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -22,7 +24,8 @@ public class TaskFourTests {
 
     @Autowired
     private FileLoader fileLoader;
-
+    @Autowired
+    private UserRepository userRepository;
     @Test
     void task_four_verifier() throws InterruptedException {
         userPopulator.populate();
@@ -39,6 +42,8 @@ public class TaskFourTests {
         logger.info("use your debugger to find out what wilbur's balance is after all transactions are processed");
         logger.info("kill this test once you find the answer");
         while (true) {
+            UserRecord userRecord =userRepository.findByName("wilbur");
+            System.out.println(userRecord.getBalance());
             Thread.sleep(20000);
             logger.info("...");
         }

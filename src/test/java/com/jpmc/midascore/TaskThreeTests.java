@@ -1,5 +1,6 @@
 package com.jpmc.midascore;
 
+import com.jpmc.midascore.repository.UserRepository;
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -16,6 +17,9 @@ public class TaskThreeTests {
 
     @Autowired
     private KafkaProducer kafkaProducer;
+
+    @Autowired
+    private UserRepository userRepository;
 
     @Autowired
     private UserPopulator userPopulator;
@@ -39,6 +43,7 @@ public class TaskThreeTests {
         logger.info("use your debugger to find out what waldorf's balance is after all transactions are processed");
         logger.info("kill this test once you find the answer");
         while (true) {
+
             Thread.sleep(20000);
             logger.info("...");
         }
